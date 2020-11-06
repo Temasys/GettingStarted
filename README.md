@@ -32,7 +32,9 @@ If you haven’t registered with Temasys, then please click the Register button.
 
 If you’re a registered user then you can log in with your username and password.
 
-![](https://https://github.com/Temasys/GettingStarted/tree/main/__images/screenshots/console/Login-Console.png)
+![](https://github.com/Temasys/GettingStarted/blob/main/__images/screenshots/console/Login-Console.png?raw=true)
+
+
 
 ## **Step 2: Register and then Log In with your Username and Password**
 
@@ -46,7 +48,7 @@ Check your email and click the Activate my account button in the confirmation em
 
 You’ll get a message that your account has been activated and you’ll be prompted to log in with your username and password.
 
-![](https://https://github.com/Temasys/GettingStarted/tree/main/__images/screenshots/console/Register-Console.png)
+![](https://github.com/Temasys/GettingStarted/blob/main/__images/screenshots/console/Register-Console.png?raw=true)
 
 ## **Step 3: Create an App**
 
@@ -54,7 +56,7 @@ Click the Add App button to get started.
 
 Click the Get Started button to continue getting started.
 
-![](https://https://github.com/Temasys/GettingStarted/tree/main/__images/screenshots/console/Console-AddApp.png)
+![](https://github.com/Temasys/GettingStarted/blob/main/__images/screenshots/console/Console-AddApp.png?raw=true)
 
 ## **Step 4: Select the Platforms and Payment Plan you Want to Use**
 
@@ -64,31 +66,31 @@ Click a platform to select that platform. You can select multiple platforms. A s
 
 Click the Next button.
 
-![](https://https://github.com/Temasys/GettingStarted/tree/main/__images/screenshots/console/Console-SelectPlatform.png)
+![](https://github.com/Temasys/GettingStarted/blob/main/__images/screenshots/console/Console-SelectPlatform.png?raw=true)
 
 ## **Step 5: Select your Plan: Basic or Pro**
 
 Choose whether you would like the Basic or Pro payment plan. Remember that you get 30-days free to sample the SDKs.
 
-![](https://https://github.com/Temasys/GettingStarted/tree/main/__images/screenshots/console/Console-Basic-Pro.png)
+![](https://github.com/Temasys/GettingStarted/blob/main/__images/screenshots/console/Console-Basic-Pro.png?raw=true)
 
 ## **Step 6: Enter Credit Card Information or Accept 30-days Trial**
 
 Enter your credit card information. Prove that you are not a robot and then click Add Credit Card. Remember that you can continue without adding a credit card and accept a 30-days trial.
 
-![](https://https://github.com/Temasys/GettingStarted/tree/main/__images/screenshots/console/Console-CreditCard.png)
+![](https://github.com/Temasys/GettingStarted/blob/main/__images/screenshots/console/Console-CreditCard.png?raw=true)
 
 ## **Step 7: View the Temasys Console Dashboard**
 
 Enter your credit card information. Prove that you are not a robot and then click Add Credit Card. Remember that you can continue without adding a credit card and accept a 30-days trial.
 
-![](https://https://github.com/Temasys/GettingStarted/tree/main/__images/screenshots/console/Console-Dasghboard.png)
+![](https://github.com/Temasys/GettingStarted/blob/main/__images/screenshots/console/Console-Dasghboard.png?raw=true)
 
 ## **Step 8: View your App Keys**
 
 Click the View Keys button to view your app keys. Remember that you app keys are private and you should not share them with anyone.
 
-![](https://https://github.com/Temasys/GettingStarted/tree/main/__images/screenshots/console/Console-Dasghboard.png)
+![](https://github.com/Temasys/GettingStarted/blob/main/__images/screenshots/console/Console-Dasghboard.png?raw=true)
 
 ### **ADDITIONAL RESOURCES**
 

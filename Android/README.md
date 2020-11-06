@@ -1,3 +1,286 @@
+**The SkylinkSDK for Android lets you build real time webRTC applications with voice calling, video chat, screen sharing, P2P file sharing or data and messages exchange. Go multi-platform with our [Web](https://temasys.io/products/sdks/js/) and [iOS](https://temasys.io/products/sdks/ios/) SDKs.**
+
+## How to implement the SkylinkSDK in your app
+
+### Step-by-step guide
+
+#### STEP 1  
+
+**Add the SDK to your project**
+
+With Android Studio, you just need to do the following to start using the SDK.
+
+#### Set up build.gradle to download and use Skylink SDK
+
+Add the following to your app's build.gradle under the Android tag:
+
+
+    repositories {
+        maven {
+            url = 'http://archiva.temasys.com.sg/repository/internal'
+        }
+    }
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
+    dependencies {
+        compile(group: 'sg.com.temasys.skylink.sdk',
+                name: 'skylink_sdk',
+                version: '2.1.0-RELEASE',
+                ext: 'aar'){
+            transitive = true
+        }
+    }
+
+
+**Note the Android SDK version required for the Skylink SDK used**
+
+    Temasys Android SDK: 2.1.0
+    Minimum API Level required: 16  
+    Targeted Android version: 29  
+
+
+#### STEP 2  
+Follow the instructions [here](https://temasys.io/creating-an-account-generating-a-key/) to generate your application key and secret.
+
+#### STEP 3  
+
+Implement Listeners in the Class which needs to receive the events sent from the SDK, for example:
+
+    /***
+    * This class is responsible for implementing all SkylinkListeners for common use of all demos/functions and directly works with SkylinkSDK.
+    * In case user does not want to implement a specific demo/function, no need to implement corresponding listener(s).
+    */
+    public abstract class SkylinkCommonService implements LifeCycleListener, MediaListener, OsListener, RemotePeerListener, MessagesListener,
+        DataTransferListener, FileTransferListener, RecordingListener {
+
+            .....
+            /**
+            * Implementation of callbacks provided by the listeners
+            */
+
+            .....
+            .....
+    }
+
+List of Listeners and the callbacks they provide can be found [here](http://cdn.temasys.io/skylink/skylinksdk/android/latest/doc/reference/sg/com/temasys/skylink/sdk/listener/package-summary.html).
+
+
+For more information on the SDK usage, please refer to the [Sample Application](https://github.com/Temasys/skylink-android-sample).
+The sample app uses the latest SkylinkSDK for Android. You will just have to download, import to Android Studio, build and run.
+
+#### Always implement [LifeCycleListener](https://cdn.temasys.io/skylink/skylinksdk/android/latest/doc/reference/sg/com/temasys/skylink/sdk/listener/LifeCycleListener.html) and [RemotePeerListener](https://cdn.temasys.io/skylink/skylinksdk/android/latest/doc/reference/sg/com/temasys/skylink/sdk/listener/RemotePeerListener.html)
+
+In addition to that, depending on the functionality you wish to achieve, add the respective listener(s).  
+
+1. For Audio and/or Video Call : Implement [OsListener](https://cdn.temasys.io/skylink/skylinksdk/android/latest/doc/reference/sg/com/temasys/skylink/sdk/listener/OsListener.html) and [MediaListener](https://cdn.temasys.io/skylink/skylinksdk/android/latest/doc/reference/sg/com/temasys/skylink/sdk/listener/MediaListener.html)  
+2. For Data Transfer : Implement [DataTransferListener](https://cdn.temasys.io/skylink/skylinksdk/android/latest/doc/reference/sg/com/temasys/skylink/sdk/listener/DataTransferListener.html)  
+3. For File Transfer : Implement [OsListener](https://cdn.temasys.io/skylink/skylinksdk/android/latest/doc/reference/sg/com/temasys/skylink/sdk/listener/OsListener.html) and [FileTransferListener](https://cdn.temasys.io/skylink/skylinksdk/android/latest/doc/reference/sg/com/temasys/skylink/sdk/listener/FileTransferListener.html)  
+4. For Messaging : Implement [MessagesListener](https://cdn.temasys.io/skylink/skylinksdk/android/latest/doc/reference/sg/com/temasys/skylink/sdk/listener/MessagesListener.html)  
+5. For Android OS/permission related : Implement [OsListener](https://cdn.temasys.io/skylink/skylinksdk/android/latest/doc/reference/sg/com/temasys/skylink/sdk/listener/OsListener.html)  
+6. For Recording : Implement [RecordingListener](https://cdn.temasys.io/skylink/skylinksdk/android/latest/doc/reference/sg/com/temasys/skylink/sdk/listener/RecordingListener.html)  
+
+#### Please note that when targeting Android 6 (API 23) and above, you will need to implement [OsListener](https://cdn.temasys.io/skylink/skylinksdk/android/latest/doc/reference/sg/com/temasys/skylink/sdk/listener/OsListener.html) to handle Android Runtime permissions.
+
+   In addition to the methods in OsListener, also override the Android method onRequestPermissionsResult.  
+   In short, Android Runtime permissions required by SDK will be prompted to app via OsListener#onPermissionRequired.  
+   App should check if permission has already been granted, and if not, request it from the user.  
+   Once granted or denied via the Android system, app should call SkylinkConnection#processPermissionsResult. The SDK will process this result and also notify app via OsListener#onPermissionGranted or OsListener#onPermissionDenied.  
+
+   Apps that target below Android API 23 **MUST NOT** implement OsListener.
+
+   Refer to the classes below in the Sample App for more details on implementing these methods.
+   There are standardised methods in PermissionUtils that each Fragment makes use of to implement each of these methods.
+
+        1. AudioFragment: For Audio permissions.
+        2. VideoFragment: For Audio and Video permissions.
+        3. MultiVideosFragment: For Audio and Video permissions.
+        4. FileTransferFragment: For external storage read and write permissions.
+
+#### Initialize SkylinkConfig to specify what features are required from the SDK
+
+    /**
+     * Get the config for video function
+     * User can custom video config by using SkylinkConfig
+     */
+    @Override
+    public SkylinkConfig getSkylinkConfig() {
+        SkylinkConfig skylinkConfig = new SkylinkConfig();
+        // VideoCall config options can be:
+        // NO_AUDIO_NO_VIDEO | AUDIO_ONLY | VIDEO_ONLY | AUDIO_AND_VIDEO
+        skylinkConfig.setAudioVideoSendConfig(SkylinkConfig.AudioVideoConfig.AUDIO_AND_VIDEO);
+        skylinkConfig.setAudioVideoReceiveConfig(SkylinkConfig.AudioVideoConfig.AUDIO_AND_VIDEO);
+        skylinkConfig.setP2PMessaging(true);
+        skylinkConfig.setFileTransfer(true);
+        skylinkConfig.setMirrorLocalFrontCameraView(true);
+        skylinkConfig.setReportVideoResolutionUntilStable(true);
+
+        // Allow only 1 remote Peer to join as our UI just support 1 remote peer
+        skylinkConfig.setMaxRemotePeersConnected(MAX_REMOTE_PEER, SkylinkConfig.AudioVideoConfig.AUDIO_AND_VIDEO);
+
+        // Set the room size
+        skylinkConfig.setSkylinkRoomSize(SkylinkConfig.SkylinkRoomSize.EXTRA_SMALL);
+
+        // Set some common configs.
+        Utils.skylinkConfigCommonOptions(skylinkConfig);
+
+        //Set default video resolution setting
+        String videoResolution = Utils.getDefaultVideoResolution();
+        if (videoResolution.equals(VIDEO_RESOLUTION_VGA)) {
+            skylinkConfig.setDefaultVideoWidth(SkylinkConfig.VIDEO_WIDTH_VGA);
+            skylinkConfig.setDefaultVideoHeight(SkylinkConfig.VIDEO_HEIGHT_VGA);
+        } else if (videoResolution.equals(VIDEO_RESOLUTION_HDR)) {
+            skylinkConfig.setDefaultVideoWidth(SkylinkConfig.VIDEO_WIDTH_HDR);
+            skylinkConfig.setDefaultVideoHeight(SkylinkConfig.VIDEO_HEIGHT_HDR);
+        } else if (videoResolution.equals(VIDEO_RESOLUTION_FHD)) {
+            skylinkConfig.setDefaultVideoWidth(SkylinkConfig.VIDEO_WIDTH_FHD);
+            skylinkConfig.setDefaultVideoHeight(SkylinkConfig.VIDEO_HEIGHT_FHD);
+        }
+
+        return skylinkConfig;
+    }
+
+**There are four kinds of AudioVideoConfig**
+
+    01. SkylinkConfig.AudioVideoConfig.NO_AUDIO_NO_VIDEO
+    02. SkylinkConfig.AudioVideoConfig.AUDIO_ONLY
+    03. SkylinkConfig.AudioVideoConfig.VIDEO_ONLY
+    04. SkylinkConfig.AudioVideoConfig.AUDIO_AND_VIDEO
+
+
+#### Initialize SkylinkConnection object using SkylinkConfig object
+
+    SkylinkConnection skylinkConnection;
+    .....
+    .....
+    {
+
+    skylinkConnection = SkylinkConnection.getInstance();
+    skylinkConnection.init(skylinkConfig, context.getApplicationContext(), new SkylinkCallback() {
+            @Override
+            public void onError(SkylinkError error, HashMap<String, Object> details) {
+                String contextDescription = (String) details.get(SkylinkEvent.CONTEXT_DESCRIPTION);
+                Log.e("SkylinkCallback", contextDescription);
+            }
+        });
+
+    // register respective listeners
+    skylinkConnection.setLifeCycleListener(this);
+    skylinkConnection.setRemotePeerListener(this);
+    skylinkConnection.setMediaListener(this);
+    skylinkConnection.setOsListener(this);
+    .........
+    .........
+    }
+
+#### Connect to a room using Skylink SDK - using the App key and secret obtained from the Temasys Console.
+
+    // you will be connected to the room named "roomName" using a user name or user data JSONObject.
+    String ROOM_NAME = "roomName";
+    String MY_USER_NAME = "userName";
+
+    skylinkConnection.connectToRoom(Config.getAppKey(), Config.getAppKeySecret(), ROOM_NAME, MY_USER_NAME,
+        new SkylinkCallback() {
+            @Override
+            public void onError(SkylinkError error, HashMap<String, Object> details) {
+                String contextDescription = (String) details.get(SkylinkEvent.CONTEXT_DESCRIPTION);
+                Log.e("SkylinkCallback", contextDescription);
+            }
+        });
+
+#### Connect to a room using Skylink SDK - using a secured connection string (recommended to use in production, refer to sample app for more details)
+
+    // SkylinkConnectionString generated with room name, appKey, secret, startTime, duration and roomSize
+    skylinkConnection.connectToRoom(skylinkConnectionString, mUserName, new SkylinkCallback() {
+            @Override
+            public void onError(SkylinkError error, HashMap<String, Object> details) {
+                String contextDescription = (String) details.get(SkylinkEvent.CONTEXT_DESCRIPTION);
+                Log.e("SkylinkCallback", contextDescription);
+            }
+        });
+
+#### Verify if the connection works by logging on callback
+
+    /***
+    * Lifecycle Listener Callbacks -- triggered on events that happen during the SDK's lifecycle
+    */
+
+    /**
+     * This is the first callback from the SkylinkSDK to specify whether the attempt to connect to the room was successful.
+     */
+    @Override
+    public void onConnectToRoomSucessful(){
+        Log.d(TAG, "onConnectToRoomSucessful");
+        // do some logic or update UI to connected state here
+        ...
+    }
+
+    /**
+     * This is triggered when there is an error upon connecting to the room
+     */
+    @Override
+    public void onConnectToRoomFailed(String errorMessage){
+        Log.d(TAG, "onConnectToRoomFailed(" + errorMessage + ")");
+        // do some logic or update UI to disconnected state here
+        ...
+    }
+
+    /**
+     * This method is triggered from the SkylinkSDK to inform whether or not the user has been successfully disconnected from the room
+     */
+    @Override
+    public void onDisconnectFromRoom(SkylinkEvent skylinkEvent, String contextDescription){
+        Log.d(TAG, "onDisconnectFromRoom(" + skylinkEvent + ", message: " + contextDescription + ")");
+        // do some logic or update UI to disconnected state here
+        ...
+    }
+
+    ...
+
+    /**
+     * This is triggered from the SkylinkSDK to deliver messages that may be useful to the user.
+     */
+    @Override
+    public void onReceiveInfo(SkylinkInfo skylinkInfo, HashMap<String, Object> details) {
+        String contextDescriptionString = (String) details.get(CONTEXT_DESCRIPTION);
+        Log.d(TAG, "onReceiveInfo(skylinkInfo: " + skylinkInfo.toString() + ", details: " + contextDescriptionString);
+        ...
+    }
+
+    /**
+     * This is triggered from the SkylinkSDK to deliver a warning message to the user
+     */
+    @Override
+    public void onReceiveWarning(SkylinkError skylinkError, HashMap<String, Object> details) {
+        String contextDescriptionString = (String) details.get(CONTEXT_DESCRIPTION);
+        ...
+    }
+
+    /**
+     * This is triggered from the SkylinkSDK to deliver an error message to the user
+     */
+    @Override
+    public void onReceiveError(SkylinkError skylinkError, HashMap<String, Object> details) {
+        String contextDescriptionString = (String) details.get(CONTEXT_DESCRIPTION);
+        ...
+    }
+
+
+## Subscribe
+
+Star the [Android Sample App Github](https://github.com/Temasys/skylink-android-sample) repo to be notified of new release tags. You can also view release notes on our [support portal](http://support.temasys.com.sg/en/support/solutions/folders/12000009705).
+
+
+## Feedback
+
+Please do not hesitate to reach out to us if you encounter any issues or if you have feedback or suggestions on how we can improve Skylink.
+You can raise tickets on our [support portal](http://support.temasys.io/).
+
+
+
+
+
 # Temasys SDK for Android - Sample Application
 
 The Sample Application(SA), which uses the latest SkylinkSDK for Android, demonstrates use of the SkylinkSDK to provide embedded real time communication in the easiest way. Just download, import to Android Studio, build and run!

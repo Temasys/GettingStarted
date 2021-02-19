@@ -7,7 +7,7 @@ This document is designed to help developers get started using the Temasys SDK f
 
 ## **Step 1: Create an Account on the Temasys Console and Generate an App Key**
 
-[Here are instructions for creating an account and generating an App Key.](https://temasys.io/creating-an-account-generating-a-key/)
+[Here are instructions for creating an account and generating an App Key.](https://github.com/Temasys/GettingStarted)
 
 ## **Step 2: Include Temasys SkylinkJS code in your website**
 

@@ -68,25 +68,7 @@ Click the Next button.
 
 ![](https://github.com/Temasys/GettingStarted/blob/main/__images/screenshots/console/Console-SelectPlatform.png?raw=true)
 
-## **Step 5: Select your Plan: Basic or Pro**
-
-Choose whether you would like the Basic or Pro payment plan. Remember that you get 30-days free to sample the SDKs.
-
-![](https://github.com/Temasys/GettingStarted/blob/main/__images/screenshots/console/Console-Basic-Pro.png?raw=true)
-
-## **Step 6: Enter Credit Card Information or Accept 30-days Trial**
-
-Enter your credit card information. Prove that you are not a robot and then click Add Credit Card. Remember that you can continue without adding a credit card and accept a 30-days trial.
-
-![](https://github.com/Temasys/GettingStarted/blob/main/__images/screenshots/console/Console-CreditCard.png?raw=true)
-
-## **Step 7: View the Temasys Console Dashboard**
-
-Enter your credit card information. Prove that you are not a robot and then click Add Credit Card. Remember that you can continue without adding a credit card and accept a 30-days trial.
-
-![](https://github.com/Temasys/GettingStarted/blob/main/__images/screenshots/console/Console-Dasghboard.png?raw=true)
-
-## **Step 8: View your App Keys**
+## **Step 5: View your App Keys**
 
 Click the View Keys button to view your app keys. Remember that you app keys are private and you should not share them with anyone.
 

@@ -166,7 +166,7 @@ Toggle console logging on and off with the setLevel method. For more logger opti
 
 You’ve created a simple video conference app. Easy, right? Now explore all the ways that you can real-time interactions to your website. You can find an overview of all the methods and events Skylink offers (like lockRoom, disableAudio or disableVideo) in the [API documentation.](https://cdn.temasys.io/skylink/skylinkjs/latest/docs/index.html)
 
-Here is an example Codepen that we’ve created that shows how you can create a very simple audio/video conference with JavaScript client-side code, with no additional server code required. See the Pen [WebRTC Audio/Video conference demo with Temasys SkylinkJS](https://codepen.io/temasys/pen/GogabE/) by Temasys ([@temasys](https://codepen.io/temasys)) on [CodePen](https://temasys.io/temasys-rtc-getting-started-web-sdk/www.codepen.io).
+Here is an example Codepen that we’ve created that shows how you can create a very simple audio/video conference with JavaScript client-side code, with no additional server code required. See the Pen [WebRTC Audio/Video conference demo with Temasys SkylinkJS](https://codepen.io/temasys/pen/GogabE/) by Temasys ([@temasys](https://codepen.io/temasys)) on [CodePen](https://codepen.io/search/pens?q=temasys).
 
 We hope you’ve enjoyed getting started with the Temasys Web SDK! Have fun, share this and let us know if you run into any [issues!](http://support.temasys.io/)
 
@@ -177,7 +177,7 @@ We hope you’ve enjoyed getting started with the Temasys Web SDK! Have fun, sha
 -   [Temasys SkylinkJS Releases](https://github.com/Temasys/SkylinkJS/releases)
 -   [Temasys SkylinkJS source code on Github](http://github.com/Temasys/SkylinkJS) (Reference Code[here](https://github.com/Temasys/SkylinkJS/tree/2.x.x/master/demos/collection))
 -   [Sample Codepen](https://codepen.io/temasys/pen/GogabE)
--   [How to get support or contribute](https://temasys.io/support)
+-   [How to get support or contribute](https://temasys.io/knowledge-center/)
 
 
 

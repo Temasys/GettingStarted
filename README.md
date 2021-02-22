@@ -80,4 +80,4 @@ Click the View Keys button to view your app keys. Remember that you app keys are
 -   [Skylink API Documentation](https://cdn.temasys.io/skylink/skylinkjs/latest/doc/classes/Skylink.html)
 -   [Temasys SkylinkJS Releases](https://github.com/Temasys/SkylinkJS/releases)
 -   [Temasys SkylinkJS source code on Github](http://github.com/Temasys/SkylinkJS) (demos  [here](https://github.com/Temasys/SkylinkJS/tree/2.x.x/master/demos))
--   [How to get support or contribute](https://temasys.io/support)
+-   [How to get support or contribute](https://temasys.io/knowledge-center/)

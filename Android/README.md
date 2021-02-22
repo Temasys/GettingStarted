@@ -1,4 +1,4 @@
-**The SkylinkSDK for Android lets you build real time webRTC applications with voice calling, video chat, screen sharing, P2P file sharing or data and messages exchange. Go multi-platform with our [Web](https://temasys.io/products/sdks/js/) and [iOS](https://temasys.io/products/sdks/ios/) SDKs.**
+**The SkylinkSDK for Android lets you build real time webRTC applications with voice calling, video chat, screen sharing, P2P file sharing or data and messages exchange. Go multi-platform with our [Web](https://github.com/Temasys/GettingStarted/tree/main/Web) and [iOS](https://github.com/Temasys/GettingStarted/tree/main/iOS) SDKs.**
 
 ## How to implement the SkylinkSDK in your app
 
@@ -42,7 +42,7 @@ Add the following to your app's build.gradle under the Android tag:
 
 
 #### STEP 2  
-Follow the instructions [here](https://temasys.io/creating-an-account-generating-a-key/) to generate your application key and secret.
+Follow the instructions [here](https://github.com/Temasys/GettingStarted) to generate your application key and secret.
 
 #### STEP 3  
 
@@ -317,7 +317,7 @@ Clone this repository.
 Import the project into Android Studio with File -> Open and select the project.
 
 #### STEP 3
-Follow the instructions [here](https://temasys.io/creating-an-account-generating-a-key/) to create an App and a key on the Temasys Console.
+Follow the instructions [here](https://github.com/Temasys/GettingStarted) to create an App and a key on the Temasys Console.
 
 #### STEP 4
 Create a copy of **config_example.xml** under **res/values** and name it **config.xml** (OR any other name unused in the res/value/ directory).
@@ -380,7 +380,7 @@ Run the sampleapp module
 
 For more information on the usage of the Temasys SDK for Android, please refer to the following:
 
- - [Temasys SDK for Android Readme](https://cdn.temasys.com.sg/skylink/skylinksdk/android/latest/readme.md)
+ - [Temasys SDK for Android Readme](https://github.com/Temasys/GettingStarted/tree/main/Android)
 
 ## Tutorials and FAQs
 

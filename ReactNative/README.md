@@ -3,7 +3,7 @@
 
 ### Pre-Requisites
 
-- A Temasys Platform Console Account, App and an App Key ID (Please refer to Steps 1 -4 here: https://temasys.io/temasys-rtc-getting-started-web-sdk)
+- A Temasys Platform Console Account, App and an App Key ID [here](https://github.com/Temasys/GettingStarted).
 - Install node.js (Min Version 10.x)
 - Install the following:
    * Android: Install and update Android Studio: https://developer.android.com/studio/index.html

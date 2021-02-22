@@ -1,5 +1,3 @@
-ylinkCPP
-
 SkylinkCPP is a C++ SDK to use the Temasys platform.
 
 ## Getting the SDK

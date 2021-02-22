@@ -33,7 +33,7 @@ If you are using Carthage, add the following line to your Cartfile:
 	
     git "https://github.com/Temasys/SKYLINK-iOS.git"
 ##### STEP 3  
-Follow the instructions [here](https://temasys.io/creating-an-account-generating-a-key/) to create an App and a key on the Temasys Console.
+Follow the instructions [here](https://github.com/Temasys/GettingStarted) to create an App and a key on the Temasys Console.
 
 
 
@@ -61,8 +61,8 @@ Your Cartfile should look like that:
 
 In the terminal, run `carthage update`
 
-#####Note: If you install by Carthage and the installation is successful, you have to link the frameworks to your project, in Xcode, go to "TARGETS" --> "Frameworks, Libraries, and Embedded Content", click "+", in the prompted window "Choose frameworks and libraries to add:", click "Add Other...", "Add Files...", in the prompted window, choose "Carthage" --> "Checkouts" --> "SKYLINK-iOS" --> "frameworks", select all the four frameworks here, then click open, you will see the four frameworks added into your "Frameworks, Libraries, and Embedded Content" window. After that, build your project, see if there is any error
-![image](./1.png)![image](./2.png)![image](./3.png)
+#####Note: If you install by Carthage and the installation is successful, you have to link the frameworks to your project, in Xcode, go to "TARGETS" --> "Frameworks, Libraries, and Embedded Content", click "+", in the prompted window "Choose frameworks and libraries to add:", click "Add Other...", "Add Files...", in the prompted window, choose "Carthage" --> "Checkouts" --> "SKYLINK-iOS" --> "frameworks", select all the four frameworks here, then click open, you will see the four frameworks added into your "Frameworks, Libraries, and Embedded Content" window. After that, build your project, see if there is any error.
+
 Create the `Project-Bridging-Header.h` and refer to it in build settings (swift compiler section)
 Add `#import <SKYLINK/SKYLINK.h>` to the newly created file
 You should be able to run your project after this, and use Temasys iOS SDK with Swift.
@@ -92,7 +92,7 @@ See our [Swift](https://github.com/Temasys/SkylinkSDK_iOS_SampleApp_Swift) and [
 
 ### Documentation, Guides and FAQs  
 [SDK Documentation](https://cdn.temasys.io/skylink/skylinksdk/ios/latest/docs/html/index.html)  
-[Getting started with Temasys iOS SDK for iOS](http://temasys.io/getting-started-skylinksdk-ios/)    
+[Getting started with Temasys iOS SDK for iOS](https://github.com/Temasys/GettingStarted/tree/main/iOS/)    
 [Handle the video view stretching](http://temasys.io/a-simple-solution-for-video-stretching/)    
 [FAQs](http://support.temasys.com.sg/support/solutions/12000000562)  
 
@@ -174,7 +174,7 @@ Navigate to the Sample App and Run `pod install`
 Open the .xcworkspace file
 
 ##### STEP 5  
-Follow the instructions [here](https://temasys.io/creating-an-account-generating-a-key/) to create an App and a key on the Temasys Console.
+Follow the instructions [here](https://github.com/Temasys/GettingStarted) to create an App and a key on the Temasys Console.
 
 ##### STEP 6   
 Set your App Key and secret in Constant.h. You may also alter the room names here.
@@ -215,12 +215,12 @@ Copyright 2019 Temasys Communications Pte Ltd Licensed under APACHE 2.0
 
 #### Tutorials and FAQs
 
-[Getting started with Temasys iOS SDK for iOS](http://temasys.io/getting-started-skylinksdk-ios/)  
+[Getting started with Temasys iOS SDK for iOS](https://github.com/Temasys/GettingStarted/tree/main/iOS)  
 [Handle the video view stretching](http://temasys.io/a-simple-solution-for-video-stretching/)  
 [FAQs](http://support.temasys.com.sg/support/solutions/12000000562)
   
 
-Also checkout our Skylink SDKs for [Web](http://skylink.io/web/) and [Android](http://skylink.io/android)
+Also checkout our Skylink SDKs for [Web](https://github.com/Temasys/GettingStarted/tree/main/Web) and [Android](https://github.com/Temasys/GettingStarted/tree/main/Android)
 
 *This document was edited for Temasys iOS SDK version 2.0.0*
 
@@ -343,13 +343,13 @@ Copyright 2019 Temasys Communications Pte Ltd Licensed under APACHE 2.0
 
 #### Tutorials and FAQs
 
-[Getting started with Temasys iOS SDK for iOS](http://temasys.io/getting-started-skylinksdk-ios/)  
+[Getting started with Temasys iOS SDK for iOS](https://github.com/Temasys/GettingStarted/tree/main/iOS)  
 [Handle the video view stretching](http://temasys.io/a-simple-solution-for-video-stretching/)  
 [FAQs](http://support.temasys.com.sg/support/solutions/12000000562)
 
 
 
-Also checkout our Skylink SDKs for [Web](http://skylink.io/web/) and [Android](http://skylink.io/android)
+Also checkout our Skylink SDKs for [Web](https://github.com/Temasys/GettingStarted/tree/main/Web) and [Android](https://github.com/Temasys/GettingStarted/tree/main/Android)
 
 *This document was edited for Temasys iOS SDK version 2.0.0*
 

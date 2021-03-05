@@ -32,7 +32,7 @@ If you haven’t registered with Temasys, then please click the Register button.
 
 If you’re a registered user then you can log in with your username and password.
 
-![](https://github.com/Temasys/GettingStarted/blob/main/__images/screenshots/console/Login-Console.png?raw=true&s=200)
+![](https://github.com/Temasys/GettingStarted/blob/main/__images/screenshots/console/Login-Console.png?raw=true){:width="200px"}
 
 
 

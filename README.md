@@ -32,7 +32,7 @@ If you haven’t registered with Temasys, then please click the Register button.
 
 If you’re a registered user then you can log in with your username and password.
 
-![](https://github.com/Temasys/GettingStarted/blob/main/__images/screenshots/console/Login-Console.png?raw=true)
+![](https://github.com/Temasys/GettingStarted/blob/main/__images/screenshots/console/Login-Console.png?raw=true =250x)
 
 
 
@@ -48,7 +48,7 @@ Check your email and click the Activate my account button in the confirmation em
 
 You’ll get a message that your account has been activated and you’ll be prompted to log in with your username and password.
 
-![](https://github.com/Temasys/GettingStarted/blob/main/__images/screenshots/console/Register-Console.png?raw=true)
+![](https://github.com/Temasys/GettingStarted/blob/main/__images/screenshots/console/Register-Console.png?raw=true =250x)
 
 ## **Step 3: Create an App**
 
@@ -56,7 +56,7 @@ Click the Add App button to get started.
 
 Click the Get Started button to continue getting started.
 
-![](https://github.com/Temasys/GettingStarted/blob/main/__images/screenshots/console/Console-AddApp.png?raw=true)
+![](https://github.com/Temasys/GettingStarted/blob/main/__images/screenshots/console/Console-AddApp.png?raw=true =250x)
 
 ## **Step 4: Select the Platforms and Payment Plan you Want to Use**
 
@@ -66,13 +66,13 @@ Click a platform to select that platform. You can select multiple platforms. A s
 
 Click the Next button.
 
-![](https://github.com/Temasys/GettingStarted/blob/main/__images/screenshots/console/Console-SelectPlatform.png?raw=true)
+![](https://github.com/Temasys/GettingStarted/blob/main/__images/screenshots/console/Console-SelectPlatform.png?raw=true =250x)
 
 ## **Step 5: View your App Keys**
 
 Click the View Keys button to view your app keys. Remember that you app keys are private and you should not share them with anyone.
 
-![](https://github.com/Temasys/GettingStarted/blob/main/__images/screenshots/console/Console-Dasghboard.png?raw=true)
+![](https://github.com/Temasys/GettingStarted/blob/main/__images/screenshots/console/Console-Dasghboard.png?raw=true =250x)
 
 ### **ADDITIONAL RESOURCES**
 

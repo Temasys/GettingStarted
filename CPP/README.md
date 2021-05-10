@@ -14,8 +14,7 @@ Please visit [temasys.io](https://temasys.io/) for information about the platfor
 
 ## Compatibilty
 
-As of today, Temasys only provides a build version for linux.\n
-Future builds for Mac and Windows are planned for the near future.
+Currently supported on Linux platform only, future releases for Mac and Windows are planned.
 
 ## Dependencies
 
@@ -25,7 +24,8 @@ The static library depends on:
 
 ## Examples
 
-An implentation sample is available on Github : https://github.com/Temasys/skylinkcpp-demo
+A minimal implentation sample is available on Github : https://github.com/Temasys/skylinkcpp-demo
+(Additional information present in code comments)
 
 ## Known issues and limitations
 

@@ -2,6 +2,8 @@ SkylinkCPP is a C++ SDK to use the Temasys platform.
 
 ## Getting the SDK
 
+Documentation can be found here : https://temasys-cdn.s3.amazonaws.com/skylink/skylinksdk/cpp/latest/doc/html/index.html
+
 You can download the latest SDK from : https://temasys-cdn.s3.amazonaws.com/skylink/skylinksdk/cpp/latest/skylinkcpp.tar.gz
 
 Find previous version in the release notes.

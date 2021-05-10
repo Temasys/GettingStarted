@@ -31,7 +31,7 @@ An implentation sample is available on Github : https://github.com/Temasys/skyli
 
 We are aware of the following limitation of the current version:
 - No error reporting system
-- No DataChannel messaging support (P2P messages), but messaging via server socket is available
+- No DataChannel messaging support (P2P messages), use standard signaling channel messaging instead.
 - No local screen capture
 
-These issues will be worked on over time.
+These issues will be corrected in future releases. 

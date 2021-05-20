@@ -12,7 +12,7 @@ This document is designed to help developers get started using the Temasys SDK f
 ## **Step 2: Include Temasys SkylinkJS code in your website**
 
 ### Include Video and Audio Elements in HTML file
-
+```html
     <html>
       <head>
         <title>WebRTC with Temasys SkylinkJS</title>
@@ -23,6 +23,7 @@ This document is designed to help developers get started using the Temasys SDK f
         <audio id="myaudio" autoplay playsinline muted</audio>
       </body>
     </html>
+```          
 
 The body contains a video tag to attach the video stream from the camera and an audio tag to attach the audio stream. We use a CSS transform call to mirror the image, so it looks and feels more natural. We mute the audio, so you don’t hear yourself speaking. The autoplay attribute is needed in some browsers where there are restrictions on autoplay.  [Autoplay policy changes](https://developers.google.com/web/updates/2017/09/autoplay-policy-changes)
 
@@ -30,7 +31,9 @@ The body contains a video tag to attach the video stream from the camera and an 
 
 ### Include socket.io in script tag
 
+```javascript
     <script  src="./path/to/socket.io.js"></script>
+```
 
 socket.io.js can be obtained from [here](https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js). Check that the version is 2.2.0.
 
@@ -40,28 +43,33 @@ socket.io.js can be obtained from [here](https://cdnjs.cloudflare.com/ajax/libs/
 
 #### I) IMPORT IN MAIN.JS
 
+```javascript
      import Skylink,  { SkylinkEventManager, SkylinkLogger, SkylinkConstants } from './path/to/skylink.complete.js'
+```
 
 Obtain the latest Skylink code  [here](https://cdn.temasys.io/skylink/skylinkjs/latest/skylink.complete.js).
 
 #### II) INCLUDE AS A SCRIPT TAG WITH TYPE AS ‘MODULE’ IN INDEX.HTML
 
+```html
      <script  src="./path/to/skylink.complete.js"  type="module"></script>
-
+```
 ## **Step 5: Initialise and then listen for events**
 
 ### Instantiate Skylink and init with config
 
-For appKey: ‘XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXX’, use the appKey you generated in the Temasys Console.
+For the appKey value use the appKey which was provided in your app definition the Temasys Console (https://console.temasys.io).
 
-Full list of init configuration options here: [initOptions](http://cdn.temasys.io/skylink/skylinkjs/2.x/docs/global.html#initOptions)
+A full list of init configuration options here: [initOptions](http://cdn.temasys.io/skylink/skylinkjs/2.x/docs/global.html#initOptions)
 
+```javascript
     const config =  {
     appKey:  'XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXX',
     defaultRoom:  'skylinkRoom',
     };
     
     skylink =  new Skylink(config);
+```
 
 ### Declare joinRoomOptions and pass as argument in joinRoom method. MediaStreams can be obtained from the resolved Promise.
 
@@ -69,6 +77,7 @@ Configure by setting audio: true and video: true to access camera and microphone
 
 Full list of joinRoom config options here: [joinRoomOptions](http://cdn.temasys.io/skylink/skylinkjs/2.x/docs/global.html#joinRoomOptions)
 
+```javascript
     const joinRoomOptions =  {
       audio:  true,
       video:  true,
@@ -86,6 +95,7 @@ Full list of joinRoom config options here: [joinRoomOptions](http://cdn.temasys.
       }
     })
     .catch();
+```
 
 ## **Step 6: Subscribing and Unsubscribing to events**
 
@@ -93,7 +103,7 @@ Full list of joinRoom config options here: [joinRoomOptions](http://cdn.temasys.
 
 [**peerJoined**](http://cdn.temasys.io/skylink/skylinkjs/latest/docs/SkylinkEvents.html#.event:peerJoined)**:** informs you that a peer has joined the room and shares their peerID and peerInfo with you. In this example, we create a new video element for this peer and use the peerId to identify this element in the DOM of our website.
 
-
+```javascript
     SkylinkEventManager.addEventListener(SkylinkConstants.EVENTS.PEER_JOINED, (evt) => {
         const { isSelf, peerId, peerInfo } = evt.detail;
         if (isSelf) {
@@ -113,6 +123,7 @@ Full list of joinRoom config options here: [joinRoomOptions](http://cdn.temasys.
         aud.id = peerId + '_audio';
         document.body.appendChild(aud);
     });
+```
 
 ### Listen on ‘incomingStream’ event with isSelf=true for self MediaStream
 
@@ -120,6 +131,7 @@ Skylink 2.x incoming stream will be either an audio stream or a video stream but
 
 [**incomingStream**](http://cdn.temasys.io/skylink/skylinkjs/latest/docs/SkylinkEvents.html#.event:onIncomingStream)**:** This event is fired after peerJoined when Temasys SkylinkJS begins to receive the audio and video streams from that peer. This peer could also be yourself (the local peer) – in which case the event is fired when you grants access to your microphone and/or camera and joins a room successfully. In this example, we use the _attachMediaStream()_ function of our enhanced AdapterJS library to feed this stream into our previously created video tag in Step 2. We use _attachMediaStream() because t_he different browser vendors have slightly different ways to do this and _attachMediaStream()_  enables us to abstract this.
 
+```javascript
     SkylinkEventManager.addEventListener(SkylinkConstants.EVENTS.ON_INCOMING_STREAM, (evt) => {
         const { isSelf, stream, peerInfo, isVideo, isAudio } = evt.detail;
         if (isSelf) {
@@ -135,11 +147,13 @@ Skylink 2.x incoming stream will be either an audio stream or a video stream but
             attachMediaStream(vid, stream);
         }
     });
+```
 
 ### Listen on ‘peerLeft’ event to handle peers leaving the room
 
 [**peerLeft**](http://cdn.temasys.io/skylink/skylinkjs/latest/docs/SkylinkEvents.html#.event:peerLeft)**:**  informs you that a peer has left the room. In our example, we look in the DOM for the video element corresponding to the peerId in the peerLeft event payload and remove it. Subscribe to the peer left event with the code below.
 
+```javascript
     SkylinkEventManager.addEventListener(SkylinkConstants.EVENTS.PEER_LEFT, (evt) => {
         const { isSelf, peerInfo, peerId } = evt.detail;
         const videoElId = isSelf ? 'myvideo' : peerId + '_video';
@@ -149,19 +163,23 @@ Skylink 2.x incoming stream will be either an audio stream or a video stream but
         document.body.removeChild(vid);
         document.body.removeChild(aud);
     });
+```
 
 ### Unsubscribing to events
 
 Unsubscribe to the peer joined event with the code below.
 
+```javascript
     SkylinkEventManager.removeEventListener(SkylinkConstants.EVENTS.PEER_JOINED, peerJoinedHandler);
+```
 
 ### Logging
 
 Toggle console logging on and off with the setLevel method. For more logger options refer to: [SkylinkLogger](http://cdn.temasys.io/skylink/skylinkjs/latest/docs/SkylinkLogger.html)
 
+```javascript
     SkylinkLogger.setLevel(SkylinkLogger.logLevels.DEBUG, storeLogs);
-
+```
 ## **Step 7: Get ready to impress!**
 
 You’ve created a simple video conference app. Easy, right? Now explore all the ways that you can real-time interactions to your website. You can find an overview of all the methods and events Skylink offers (like lockRoom, disableAudio or disableVideo) in the [API documentation.](https://cdn.temasys.io/skylink/skylinkjs/latest/docs/index.html)

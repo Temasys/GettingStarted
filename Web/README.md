@@ -217,11 +217,13 @@ iii) To handle peers leaving the room, add a listener for the `PEER_LEFT` event.
 ```javascript
     SkylinkLogger.setLevel(SkylinkLogger.logLevels.DEBUG, storeLogs);
 ```
-## **Step 7: Get ready to impress!**
+## **Step 7: Get ready to impress! Your app is ready to test.**
 
-You’ve created a simple video conference app. Easy, right? Now explore all the ways that you can real-time interactions to your website. You can find an overview of all the methods and events Skylink offers (like lockRoom, disableAudio or disableVideo) in the [API documentation.](https://cdn.temasys.io/skylink/skylinkjs/latest/docs/index.html)
+You’ve created a simple video conference app and are on your way to explore all the ways that you can real-time interactions to your website.  
 
-Here is an example Codepen that we’ve created that shows how you can create a very simple audio/video conference with JavaScript client-side code, with no additional server code required. See the Pen [WebRTC Audio/Video conference demo with Temasys SkylinkJS](https://codepen.io/temasys/pen/GogabE/) by Temasys ([@temasys](https://codepen.io/temasys)) on [CodePen](https://codepen.io/search/pens?q=temasys).
+You can find an overview of all the methods and events Skylink offers in the [SDK documentation.](https://cdn.temasys.io/skylink/skylinkjs/latest/docs/index.html)
+
+You can find a CodePen example that we’ve created that shows how you can create a very simple audio/video conference with JavaScript client-side code, with no additional server code required. See the Pen [WebRTC Audio/Video conference demo with Temasys SkylinkJS](https://codepen.io/temasys/pen/GogabE/) by Temasys ([@temasys](https://codepen.io/temasys)) on [CodePen](https://codepen.io/search/pens?q=temasys).
 
 We hope you’ve enjoyed getting started with the Temasys Web SDK! Have fun, share this and let us know if you run into any [issues!](http://support.temasys.io/)
 

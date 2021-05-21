@@ -232,7 +232,7 @@ We hope you’ve enjoyed getting started with the Temasys Web SDK! Have fun, sha
 -   [Temasys Developer Console](https://console.temasys.io/)
 -   [Skylink API Documentation](https://cdn.temasys.io/skylink/skylinkjs/latest/docs/index.html)
 -   [Temasys SkylinkJS Releases](https://github.com/Temasys/SkylinkJS/releases)
--   [Temasys SkylinkJS source code on Github](http://github.com/Temasys/SkylinkJS) (Reference Code[here](https://github.com/Temasys/SkylinkJS/tree/2.x.x/master/demos/collection))
+-   [Temasys SkylinkJS source code on Github](http://github.com/Temasys/SkylinkJS) (Reference Code can be found [here](https://github.com/Temasys/SkylinkJS/tree/2.x.x/master/demos/collection))
 -   [Sample Codepen](https://codepen.io/temasys/pen/GogabE)
 -   [How to get support or contribute](https://temasys.io/knowledge-center/)
 

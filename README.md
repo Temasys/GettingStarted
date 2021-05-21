@@ -1,5 +1,7 @@
 # Getting Started
 
+<img width="600" src="https://github.com/Temasys/GettingStarted/blob/main/__images/sdk_getting_started_banner.png?raw=true" />
+
 
 # Skylink SDKS
 

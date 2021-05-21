@@ -3,7 +3,7 @@
 <img width="600" src="https://github.com/Temasys/GettingStarted/blob/main/__images/sdk_getting_started_banner.png?raw=true" />
 
 
-# Skylink SDKS
+# Select your Skylink SDK(s)
 
 [SklinkJS SDK for Web](https://github.com/Temasys/GettingStarted/tree/main/Web)
 
@@ -37,7 +37,7 @@ If you’re a registered user then you can log in with your username and passwor
 <img width="300" src="https://github.com/Temasys/GettingStarted/blob/main/__images/screenshots/console/Login-Console.png?raw=true" />
 
 
-## **Step 2: Register and then Log In with your Username and Password**
+## **Step 2: Verify your account and sign-in to the Temasys Console**
 
 In the Register window enter your personal details and a password.
 

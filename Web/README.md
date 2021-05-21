@@ -20,10 +20,10 @@ This document is designed to help developers get started using the Temasys SDK f
     <html>
       <head>
         <title>WebRTC with Temasys SkylinkJS</title>
-        <script><script>
+        <script></script>
       </head>
       <body>
-        <video id="myvideo" style="transform: rotateY(-180deg)" autoplay playinsline muted</video>
+        <video id="myvideo" style="transform: rotateY(-180deg);" autoplay playinsline muted</video>
         <audio id="myaudio" autoplay playsinline muted</audio>
       </body>
     </html>

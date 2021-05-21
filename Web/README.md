@@ -1,5 +1,7 @@
 
-# Getting Started with the Temasys SDK for Web
+# Getting Started with the Temasys Skylink SDK for Web
+
+The Temasys Skylink SDK enables you to easily embed rich multi-user actions and communications features into any web application or page. 
 
 ## **A step-by-step guide to embedding Real-Time Communication features into your webapp or website**
 

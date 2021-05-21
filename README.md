@@ -65,13 +65,13 @@ Click a platform to select that platform. You can select multiple platforms. A s
 
 Click the Next button.
 
-<img width="300" src="https://github.com/Temasys/GettingStarted/blob/main/__images/screenshots/console/Console-SelectPlatform.png?raw=true" />
+<img width="600" src="https://github.com/Temasys/GettingStarted/blob/main/__images/screenshots/console/Console-SelectPlatform.png?raw=true" />
 
 ## **Step 5: View your App Keys**
 
 Click the View Keys button to view your app keys. Remember that you app keys are private and you should not share them with anyone.
 
-<img width="300" src="https://github.com/Temasys/GettingStarted/blob/main/__images/screenshots/console/Console-Dasghboard.png?raw=true" />
+<img width="600" src="https://github.com/Temasys/GettingStarted/blob/main/__images/screenshots/console/Console-Dasghboard.png?raw=true" />
 
 ### **ADDITIONAL RESOURCES**
 

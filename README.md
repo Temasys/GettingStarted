@@ -55,7 +55,7 @@ Click the Add App button to get started.
 
 Click the Get Started button to continue getting started.
 
-<img width="300" src="https://github.com/Temasys/GettingStarted/blob/main/__images/screenshots/console/Console-AddApp.png?raw=true" />
+<img width="100" src="https://github.com/Temasys/GettingStarted/blob/main/__images/screenshots/console/Console-AddApp.png?raw=true" />
 
 ## **Step 4: Select the Platforms and Payment Plan you Want to Use**
 

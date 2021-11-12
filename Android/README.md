@@ -10,33 +10,102 @@
 
 With Android Studio, you just need to do the following to start using the SDK.
 
-#### Set up build.gradle to download and use Skylink SDK
+#### Set Gradle configuration to download and use Skylink SDK
 
-Add the following to your app's build.gradle under the Android tag:
+Gradle configuration changes depending on the version of Gradle that you use in your Android Studio project.
 
+Version of Gradle that you use can be found in top-level build.gradle file.
 
+Example :
+
+``` gradle
+buildscript {
     repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:7.0.3"
+    }
+}
+```
+
+In this case, Gradle version is 7.0.3. 
+
+##### For newer versions of Gradle (version 7.0.0 and above)
+
+Add repository to download Skylink SDK to settings.gradle file.
+
+``` gradle
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+
+        // Repository to download Skylink SDK
         maven {
-            url = 'http://archiva.temasys.com.sg/repository/internal'
+            url = 'https://archiva.temasys.io/repository/internal'
         }
     }
+}
+```
+
+Then add Skylink SDK under the dependencies tag in your app's build.gradle file.
+
+``` gradle
+dependencies {
+    // Other dependencies comes here...
+
+    // Skylink SDK
+    implementation(group: 'sg.com.temasys.skylink.sdk',
+            name: 'skylink_sdk',
+            version: '2.2.0-RELEASE',
+            ext: 'aar') {
+        transitive = true
+    }
+}
+```
+
+##### For older versions of Gradle (version 4.2.x and below)
+
+Add repository to download Skylink SDK under the repositories tag in your app's build.gradle file.
+
+Then add Skylink SDK under the dependencies tag in your app's build.gradle file.
+
+``` gradle
+android {
+    // Other configurations comes here...
+
     compileOptions {
         sourceCompatibility 1.8
         targetCompatibility 1.8
     }
-    dependencies {
-        compile(group: 'sg.com.temasys.skylink.sdk',
-                name: 'skylink_sdk',
-                version: '2.1.0-RELEASE',
-                ext: 'aar'){
-            transitive = true
-        }
-    }
+}
 
+repositories {
+    // Repository to download Skylink SDK
+    maven {
+        url = 'https://archiva.temasys.io/repository/internal'
+    }
+}
+
+dependencies {
+    // Other dependencies comes here...
+
+    // Skylink SDK
+    compile(group: 'sg.com.temasys.skylink.sdk',
+            name: 'skylink_sdk',
+            version: '2.2.0-RELEASE',
+            ext: 'aar') {
+        transitive = true
+    }
+}
+```
 
 **Note the Android SDK version required for the Skylink SDK used**
 
-    Temasys Android SDK: 2.1.0
+    Temasys Android SDK: 2.2.0
     Minimum API Level required: 16  
     Targeted Android version: 29  
 

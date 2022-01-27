@@ -10,7 +10,7 @@ Messages will also only be persisted if the messages are encrypted, are public m
 ## How to retrieve persistent message count using the Temasys REST API
 Endpoint url: `https://api.temasys.io`
 
-**GET/api/persistentMessages/\<appKey>/\<roomid>/\<timestamp>?credentials=\<credentials>**
+**GET/rest/notifications/persistentMessages/\<appKey>/\<roomid>/\<timestamp>?credentials=\<credentials>**
 > |Parameter|Description|
 > |-|-|
 > |appKey|The app key that is used in `initOptions` when instantiating the Skylink instance.|

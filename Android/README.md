@@ -60,7 +60,7 @@ dependencies {
     // Skylink SDK
     implementation(group: 'sg.com.temasys.skylink.sdk',
             name: 'skylink_sdk',
-            version: '2.2.0-RELEASE',
+            version: '2.2.2-RELEASE',
             ext: 'aar') {
         transitive = true
     }
@@ -96,7 +96,7 @@ dependencies {
     // Skylink SDK
     compile(group: 'sg.com.temasys.skylink.sdk',
             name: 'skylink_sdk',
-            version: '2.2.0-RELEASE',
+            version: '2.2.2-RELEASE',
             ext: 'aar') {
         transitive = true
     }
@@ -105,7 +105,7 @@ dependencies {
 
 **Note the Android SDK version required for the Skylink SDK used**
 
-    Temasys Android SDK: 2.2.0
+    Temasys Android SDK: 2.2.2
     Minimum API Level required: 16  
     Targeted Android version: 29  
 

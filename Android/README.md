@@ -25,12 +25,12 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:7.0.3"
+        classpath "com.android.tools.build:gradle:7.2.1"
     }
 }
 ```
 
-In this case, Gradle version is 7.0.3. 
+In this case, Gradle version is 7.2.1. 
 
 ##### For newer versions of Gradle (version 7.0.0 and above)
 
@@ -57,13 +57,15 @@ Then add Skylink SDK under the dependencies tag in your app's build.gradle file.
 dependencies {
     // Other dependencies comes here...
 
-    // Skylink SDK
+    // Skylink SDKs
     implementation(group: 'sg.com.temasys.skylink.sdk',
             name: 'skylink_sdk',
-            version: '2.2.0-RELEASE',
+            version: '2.3.1-RELEASE',
             ext: 'aar') {
         transitive = true
+        exclude group: 'sg.com.temasys.skylink.sdk', module: 'skylink_message_cache_sdk'
     }
+    implementation('sg.com.temasys.skylink.sdk:skylink_message_cache_sdk:1.0.1-RELEASE')
 }
 ```
 
@@ -93,21 +95,24 @@ repositories {
 dependencies {
     // Other dependencies comes here...
 
-    // Skylink SDK
+    // Skylink SDKs
     compile(group: 'sg.com.temasys.skylink.sdk',
             name: 'skylink_sdk',
-            version: '2.2.0-RELEASE',
+            version: '2.3.1-RELEASE',
             ext: 'aar') {
         transitive = true
+        exclude group: 'sg.com.temasys.skylink.sdk', module: 'skylink_message_cache_sdk'
     }
+    compile('sg.com.temasys.skylink.sdk:skylink_message_cache_sdk:1.0.1-RELEASE')
 }
 ```
 
 **Note the Android SDK version required for the Skylink SDK used**
 
-    Temasys Android SDK: 2.2.0
-    Minimum API Level required: 16  
-    Targeted Android version: 29  
+    Temasys Android SDK : 2.3.1
+    Skylink Message Cache SDK : 1.0.1
+    Minimum API Level required : 16  
+    Targeted Android version : 29  
 
 
 #### STEP 2  
@@ -117,21 +122,23 @@ Follow the instructions [here](https://github.com/Temasys/GettingStarted) to gen
 
 Implement Listeners in the Class which needs to receive the events sent from the SDK, for example:
 
-    /***
-    * This class is responsible for implementing all SkylinkListeners for common use of all demos/functions and directly works with SkylinkSDK.
-    * In case user does not want to implement a specific demo/function, no need to implement corresponding listener(s).
-    */
-    public abstract class SkylinkCommonService implements LifeCycleListener, MediaListener, OsListener, RemotePeerListener, MessagesListener,
-        DataTransferListener, FileTransferListener, RecordingListener {
+``` java
+/***
+* This class is responsible for implementing all SkylinkListeners for common use of all demos/functions and directly works with SkylinkSDK.
+* In case user does not want to implement a specific demo/function, no need to implement corresponding listener(s).
+*/
+public abstract class SkylinkCommonService implements LifeCycleListener, MediaListener, OsListener, RemotePeerListener, MessagesListener,
+    DataTransferListener, FileTransferListener, RecordingListener {
 
-            .....
-            /**
-            * Implementation of callbacks provided by the listeners
-            */
+        .....
+        /**
+        * Implementation of callbacks provided by the listeners
+        */
 
-            .....
-            .....
-    }
+        .....
+        .....
+}
+```
 
 List of Listeners and the callbacks they provide can be found [here](http://cdn.temasys.io/skylink/skylinksdk/android/latest/doc/reference/sg/com/temasys/skylink/sdk/listener/package-summary.html).
 
@@ -169,46 +176,48 @@ In addition to that, depending on the functionality you wish to achieve, add the
 
 #### Initialize SkylinkConfig to specify what features are required from the SDK
 
-    /**
-     * Get the config for video function
-     * User can custom video config by using SkylinkConfig
-     */
-    @Override
-    public SkylinkConfig getSkylinkConfig() {
-        SkylinkConfig skylinkConfig = new SkylinkConfig();
-        // VideoCall config options can be:
-        // NO_AUDIO_NO_VIDEO | AUDIO_ONLY | VIDEO_ONLY | AUDIO_AND_VIDEO
-        skylinkConfig.setAudioVideoSendConfig(SkylinkConfig.AudioVideoConfig.AUDIO_AND_VIDEO);
-        skylinkConfig.setAudioVideoReceiveConfig(SkylinkConfig.AudioVideoConfig.AUDIO_AND_VIDEO);
-        skylinkConfig.setP2PMessaging(true);
-        skylinkConfig.setFileTransfer(true);
-        skylinkConfig.setMirrorLocalFrontCameraView(true);
-        skylinkConfig.setReportVideoResolutionUntilStable(true);
+``` java
+/**
+    * Get the config for video function
+    * User can custom video config by using SkylinkConfig
+    */
+@Override
+public SkylinkConfig getSkylinkConfig() {
+    SkylinkConfig skylinkConfig = new SkylinkConfig();
+    // VideoCall config options can be:
+    // NO_AUDIO_NO_VIDEO | AUDIO_ONLY | VIDEO_ONLY | AUDIO_AND_VIDEO
+    skylinkConfig.setAudioVideoSendConfig(SkylinkConfig.AudioVideoConfig.AUDIO_AND_VIDEO);
+    skylinkConfig.setAudioVideoReceiveConfig(SkylinkConfig.AudioVideoConfig.AUDIO_AND_VIDEO);
+    skylinkConfig.setP2PMessaging(true);
+    skylinkConfig.setFileTransfer(true);
+    skylinkConfig.setMirrorLocalFrontCameraView(true);
+    skylinkConfig.setReportVideoResolutionUntilStable(true);
 
-        // Allow only 1 remote Peer to join as our UI just support 1 remote peer
-        skylinkConfig.setMaxRemotePeersConnected(MAX_REMOTE_PEER, SkylinkConfig.AudioVideoConfig.AUDIO_AND_VIDEO);
+    // Allow only 1 remote Peer to join as our UI just support 1 remote peer
+    skylinkConfig.setMaxRemotePeersConnected(MAX_REMOTE_PEER, SkylinkConfig.AudioVideoConfig.AUDIO_AND_VIDEO);
 
-        // Set the room size
-        skylinkConfig.setSkylinkRoomSize(SkylinkConfig.SkylinkRoomSize.EXTRA_SMALL);
+    // Set the room size
+    skylinkConfig.setSkylinkRoomSize(SkylinkConfig.SkylinkRoomSize.EXTRA_SMALL);
 
-        // Set some common configs.
-        Utils.skylinkConfigCommonOptions(skylinkConfig);
+    // Set some common configs.
+    Utils.skylinkConfigCommonOptions(skylinkConfig);
 
-        //Set default video resolution setting
-        String videoResolution = Utils.getDefaultVideoResolution();
-        if (videoResolution.equals(VIDEO_RESOLUTION_VGA)) {
-            skylinkConfig.setDefaultVideoWidth(SkylinkConfig.VIDEO_WIDTH_VGA);
-            skylinkConfig.setDefaultVideoHeight(SkylinkConfig.VIDEO_HEIGHT_VGA);
-        } else if (videoResolution.equals(VIDEO_RESOLUTION_HDR)) {
-            skylinkConfig.setDefaultVideoWidth(SkylinkConfig.VIDEO_WIDTH_HDR);
-            skylinkConfig.setDefaultVideoHeight(SkylinkConfig.VIDEO_HEIGHT_HDR);
-        } else if (videoResolution.equals(VIDEO_RESOLUTION_FHD)) {
-            skylinkConfig.setDefaultVideoWidth(SkylinkConfig.VIDEO_WIDTH_FHD);
-            skylinkConfig.setDefaultVideoHeight(SkylinkConfig.VIDEO_HEIGHT_FHD);
-        }
-
-        return skylinkConfig;
+    //Set default video resolution setting
+    String videoResolution = Utils.getDefaultVideoResolution();
+    if (videoResolution.equals(VIDEO_RESOLUTION_VGA)) {
+        skylinkConfig.setDefaultVideoWidth(SkylinkConfig.VIDEO_WIDTH_VGA);
+        skylinkConfig.setDefaultVideoHeight(SkylinkConfig.VIDEO_HEIGHT_VGA);
+    } else if (videoResolution.equals(VIDEO_RESOLUTION_HDR)) {
+        skylinkConfig.setDefaultVideoWidth(SkylinkConfig.VIDEO_WIDTH_HDR);
+        skylinkConfig.setDefaultVideoHeight(SkylinkConfig.VIDEO_HEIGHT_HDR);
+    } else if (videoResolution.equals(VIDEO_RESOLUTION_FHD)) {
+        skylinkConfig.setDefaultVideoWidth(SkylinkConfig.VIDEO_WIDTH_FHD);
+        skylinkConfig.setDefaultVideoHeight(SkylinkConfig.VIDEO_HEIGHT_FHD);
     }
+
+    return skylinkConfig;
+}
+```
 
 **There are four kinds of AudioVideoConfig**
 
@@ -220,121 +229,124 @@ In addition to that, depending on the functionality you wish to achieve, add the
 
 #### Initialize SkylinkConnection object using SkylinkConfig object
 
-    SkylinkConnection skylinkConnection;
-    .....
-    .....
-    {
-
-    skylinkConnection = SkylinkConnection.getInstance();
-    skylinkConnection.init(skylinkConfig, context.getApplicationContext(), new SkylinkCallback() {
-            @Override
-            public void onError(SkylinkError error, HashMap<String, Object> details) {
-                String contextDescription = (String) details.get(SkylinkEvent.CONTEXT_DESCRIPTION);
-                Log.e("SkylinkCallback", contextDescription);
-            }
-        });
-
-    // register respective listeners
-    skylinkConnection.setLifeCycleListener(this);
-    skylinkConnection.setRemotePeerListener(this);
-    skylinkConnection.setMediaListener(this);
-    skylinkConnection.setOsListener(this);
-    .........
-    .........
+``` java
+SkylinkConnection skylinkConnection;
+skylinkConnection = SkylinkConnection.getInstance();
+skylinkConnection.init(skylinkConfig, context.getApplicationContext(), new SkylinkCallback() {
+        @Override
+        public void onError(SkylinkError error, HashMap<String, Object> details) {
+            String contextDescription = (String) details.get(SkylinkEvent.CONTEXT_DESCRIPTION);
+            Log.e("SkylinkCallback", contextDescription);
+        }
     }
+);
+
+// register respective listeners
+skylinkConnection.setLifeCycleListener(this);
+skylinkConnection.setRemotePeerListener(this);
+skylinkConnection.setMediaListener(this);
+skylinkConnection.setOsListener(this);
+```
 
 #### Connect to a room using Skylink SDK - using the App key and secret obtained from the Temasys Console.
 
-    // you will be connected to the room named "roomName" using a user name or user data JSONObject.
-    String ROOM_NAME = "roomName";
-    String MY_USER_NAME = "userName";
+``` java
+// you will be connected to the room named "roomName" using a user name or user data JSONObject.
+String ROOM_NAME = "roomName";
+String MY_USER_NAME = "userName";
 
-    skylinkConnection.connectToRoom(Config.getAppKey(), Config.getAppKeySecret(), ROOM_NAME, MY_USER_NAME,
-        new SkylinkCallback() {
-            @Override
-            public void onError(SkylinkError error, HashMap<String, Object> details) {
-                String contextDescription = (String) details.get(SkylinkEvent.CONTEXT_DESCRIPTION);
-                Log.e("SkylinkCallback", contextDescription);
-            }
-        });
+skylinkConnection.connectToRoom(Config.getAppKey(), Config.getAppKeySecret(), ROOM_NAME, MY_USER_NAME,
+    new SkylinkCallback() {
+        @Override
+        public void onError(SkylinkError error, HashMap<String, Object> details) {
+            String contextDescription = (String) details.get(SkylinkEvent.CONTEXT_DESCRIPTION);
+            Log.e("SkylinkCallback", contextDescription);
+        }
+    }
+);
+```
 
 #### Connect to a room using Skylink SDK - using a secured connection string (recommended to use in production, refer to sample app for more details)
 
-    // SkylinkConnectionString generated with room name, appKey, secret, startTime, duration and roomSize
-    skylinkConnection.connectToRoom(skylinkConnectionString, mUserName, new SkylinkCallback() {
-            @Override
-            public void onError(SkylinkError error, HashMap<String, Object> details) {
-                String contextDescription = (String) details.get(SkylinkEvent.CONTEXT_DESCRIPTION);
-                Log.e("SkylinkCallback", contextDescription);
-            }
-        });
+``` java
+// SkylinkConnectionString generated with room name, appKey, secret, startTime, duration and roomSize
+skylinkConnection.connectToRoom(skylinkConnectionString, mUserName, new SkylinkCallback() {
+        @Override
+        public void onError(SkylinkError error, HashMap<String, Object> details) {
+            String contextDescription = (String) details.get(SkylinkEvent.CONTEXT_DESCRIPTION);
+            Log.e("SkylinkCallback", contextDescription);
+        }
+    }
+);
+```
 
 #### Verify if the connection works by logging on callback
 
-    /***
-    * Lifecycle Listener Callbacks -- triggered on events that happen during the SDK's lifecycle
+``` java
+/***
+* Lifecycle Listener Callbacks -- triggered on events that happen during the SDK's lifecycle
+*/
+
+/**
+    * This is the first callback from the SkylinkSDK to specify whether the attempt to connect to the room was successful.
     */
-
-    /**
-     * This is the first callback from the SkylinkSDK to specify whether the attempt to connect to the room was successful.
-     */
-    @Override
-    public void onConnectToRoomSucessful(){
-        Log.d(TAG, "onConnectToRoomSucessful");
-        // do some logic or update UI to connected state here
-        ...
-    }
-
-    /**
-     * This is triggered when there is an error upon connecting to the room
-     */
-    @Override
-    public void onConnectToRoomFailed(String errorMessage){
-        Log.d(TAG, "onConnectToRoomFailed(" + errorMessage + ")");
-        // do some logic or update UI to disconnected state here
-        ...
-    }
-
-    /**
-     * This method is triggered from the SkylinkSDK to inform whether or not the user has been successfully disconnected from the room
-     */
-    @Override
-    public void onDisconnectFromRoom(SkylinkEvent skylinkEvent, String contextDescription){
-        Log.d(TAG, "onDisconnectFromRoom(" + skylinkEvent + ", message: " + contextDescription + ")");
-        // do some logic or update UI to disconnected state here
-        ...
-    }
-
+@Override
+public void onConnectToRoomSucessful(){
+    Log.d(TAG, "onConnectToRoomSucessful");
+    // do some logic or update UI to connected state here
     ...
+}
 
-    /**
-     * This is triggered from the SkylinkSDK to deliver messages that may be useful to the user.
-     */
-    @Override
-    public void onReceiveInfo(SkylinkInfo skylinkInfo, HashMap<String, Object> details) {
-        String contextDescriptionString = (String) details.get(CONTEXT_DESCRIPTION);
-        Log.d(TAG, "onReceiveInfo(skylinkInfo: " + skylinkInfo.toString() + ", details: " + contextDescriptionString);
-        ...
-    }
+/**
+    * This is triggered when there is an error upon connecting to the room
+    */
+@Override
+public void onConnectToRoomFailed(String errorMessage){
+    Log.d(TAG, "onConnectToRoomFailed(" + errorMessage + ")");
+    // do some logic or update UI to disconnected state here
+    ...
+}
 
-    /**
-     * This is triggered from the SkylinkSDK to deliver a warning message to the user
-     */
-    @Override
-    public void onReceiveWarning(SkylinkError skylinkError, HashMap<String, Object> details) {
-        String contextDescriptionString = (String) details.get(CONTEXT_DESCRIPTION);
-        ...
-    }
+/**
+    * This method is triggered from the SkylinkSDK to inform whether or not the user has been successfully disconnected from the room
+    */
+@Override
+public void onDisconnectFromRoom(SkylinkEvent skylinkEvent, String contextDescription){
+    Log.d(TAG, "onDisconnectFromRoom(" + skylinkEvent + ", message: " + contextDescription + ")");
+    // do some logic or update UI to disconnected state here
+    ...
+}
 
-    /**
-     * This is triggered from the SkylinkSDK to deliver an error message to the user
-     */
-    @Override
-    public void onReceiveError(SkylinkError skylinkError, HashMap<String, Object> details) {
-        String contextDescriptionString = (String) details.get(CONTEXT_DESCRIPTION);
-        ...
-    }
+...
 
+/**
+    * This is triggered from the SkylinkSDK to deliver messages that may be useful to the user.
+    */
+@Override
+public void onReceiveInfo(SkylinkInfo skylinkInfo, HashMap<String, Object> details) {
+    String contextDescriptionString = (String) details.get(CONTEXT_DESCRIPTION);
+    Log.d(TAG, "onReceiveInfo(skylinkInfo: " + skylinkInfo.toString() + ", details: " + contextDescriptionString);
+    ...
+}
+
+/**
+    * This is triggered from the SkylinkSDK to deliver a warning message to the user
+    */
+@Override
+public void onReceiveWarning(SkylinkError skylinkError, HashMap<String, Object> details) {
+    String contextDescriptionString = (String) details.get(CONTEXT_DESCRIPTION);
+    ...
+}
+
+/**
+    * This is triggered from the SkylinkSDK to deliver an error message to the user
+    */
+@Override
+public void onReceiveError(SkylinkError skylinkError, HashMap<String, Object> details) {
+    String contextDescriptionString = (String) details.get(CONTEXT_DESCRIPTION);
+    ...
+}
+```
 
 ## Subscribe
 
@@ -347,7 +359,50 @@ Please do not hesitate to reach out to us if you encounter any issues or if you 
 You can raise tickets on our [support portal](http://support.temasys.io/).
 
 
+# How to integrate the Skylink Message Cache SDK into your app
 
+#### Initialize SkylinkConfig to enable message cache feature is required
+
+``` java
+SkylinkConfig skylinkConfig = new SkylinkConfig();
+
+// Enable message caching (Message caching is disabled by default in SkylinkConfig)
+skylinkConfig.setMessageCachingEnable(true);
+
+// Set maximum number of messages that will be cached per Skylink Room (default value is 50)
+skylinkConfig.setMessageCachingLimit(100);
+```
+
+#### Get cached messages
+
+``` java
+if ( SkylinkMessageCache.getInstance().isEnabled() ) {
+    // Get a readable session from the message cache to your room
+    JSONArray cachedMsgs = SkylinkMessageCache.getInstance().getReadableSession("<your-room-name>").getCachedMessages();
+    
+    // Processing cached messages :-
+    // Assuming all cached messages are String messages (not JSONObject or JSONArray messages)
+    for (int i = 0; i < cachedMsgs.length(); i++) {
+        JSONObject cachedMsg = (JSONObject) cachedMsgs.get(i);
+        String senderId   = cachedMsg.getString("senderId");
+        String msgContent = cachedMsg.getString("data");
+        long timestamp    = cachedMsg.getLong("timeStamp");
+    }
+}
+```
+
+#### Clear cached messages (optional)
+
+``` java
+// Get a writable session from the message cache to your room and clear cached messages of that room
+SkylinkMessageCache.getInstance().getWritableSession("<your-room-name>").clearCachedMessages();
+
+// Clear a specific cached room (including cached room information + cached messages)
+SkylinkMessageCache.getInstance().clearRoom("<your-room-name>");
+
+// Clear everything in the message cache (all cached rooms and cached messages)
+SkylinkMessageCache.getInstance().clearAll();
+```
 
 
 # Temasys SDK for Android - Sample Application
@@ -414,25 +469,24 @@ Populate the boolean value for **is_app_key_smr** with whether the app should st
 
 Example of config.xml file using a single App Key: 12345678-abc2-abc3-abc4-abc5abc6abc7 with the corresponding secret: 123456789123 with MCU set to OFF on the console:
 
+``` xml
+<!-- App Keys and secrets. -->
+<!--Uncomment in config.xml-->
+<!--Since MCU has been set to OFF on the console, the boolean value of is_app_key_smr has been set to false-->
+<bool name="is_app_key_smr">false</bool>
 
+<!--Uncomment in config.xml-->
+<!--Enter Details of your App Key for which SMR has been set to false below-->
+<string name="app_key_no_smr">12345678-abc2-abc3-abc4-abc5abc6abc7</string>
+<string name="app_key_secret_no_smr">123456789123</string>
+<string name="app_key_desc_no_smr">Non SMR Key for my awesome application</string>
 
-    <!-- App Keys and secrets. -->
-    <!--Uncomment in config.xml-->
-    <!--Since MCU has been set to OFF on the console, the boolean value of is_app_key_smr has been set to false-->
-    <bool name="is_app_key_smr">false</bool>
-
-    <!--Uncomment in config.xml-->
-    <!--Enter Details of your App Key for which SMR has been set to false below-->
-    <string name="app_key_no_smr">12345678-abc2-abc3-abc4-abc5abc6abc7</string>
-    <string name="app_key_secret_no_smr">123456789123</string>
-    <string name="app_key_desc_no_smr">Non SMR Key for my awesome application</string>
-
-    <!--Uncomment in config.xml-->
-    <!--Since this is a case where only 1 key has been created with SMR set to false, you need not make any changes to the below-->
-    <string name="app_key_smr">Any string.</string>
-    <string name="app_key_secret_smr">Any string</string>
-    <string name="app_key_desc_smr">Any string</string>
-
+<!--Uncomment in config.xml-->
+<!--Since this is a case where only 1 key has been created with SMR set to false, you need not make any changes to the below-->
+<string name="app_key_smr">Any string.</string>
+<string name="app_key_secret_smr">Any string</string>
+<string name="app_key_desc_smr">Any string</string>
+```
 
 ### For more examples, you may wish to refer to our guide: [How does the Sample App handle SMR Functionality?](http://support.temasys.com.sg/support/solutions/articles/12000064630)
 
@@ -470,7 +524,6 @@ You can raise tickets on our [support portal](http://support.temasys.io/) or on 
 ## Copyright and License
 
 Copyright 2019 Temasys Communications Pte Ltd Licensed under [APACHE 2.0](http://www.apache.org/licenses/LICENSE-2.0.html)
-
 
 
 # Sample app architecture in MVP
@@ -516,3 +569,38 @@ https://github.com/Temasys/skylink-android-sample/blob/master/SA_MVP_Class_Diagr
   - **SkylinkCommonService**: an abstract class responsible for implementing all listeners which sent from the SDK, using BasePresenter to update GUI and keep track of peers in room, and singleton SkylinkConnection instance.
   - **SkylinkConnectionManager**: a class responsible for managing connection to the SDK like initializeSkylinkConnection, connectToRoom, disconnectFromRoom, generate SkylinkConnectionString
   - **PermissionService**: responsible for processing runtime permissions required by media/file usages.
+
+
+# Skylink Message Cache SDK for Android - Sample Application
+
+The application which uses the latest Skylink Message Cache SDK for Android demonstrates the use of persistent message caching feature.
+
+Implementation of the app is divided in to 2 Gradle modules.
+
+* `app` : Implements the UI and app logic
+* `skylink_sample` : Contains Java class implementations taken from [skylink-android-sample](https://github.com/Temasys/skylink-android-sample) project.
+
+ChatService implementation is completely taken from the [skylink-android-sample](https://github.com/Temasys/skylink-android-sample) project and modified slightly to enable message caching feature.
+
+Check out [Skylink Message Cache Sample App](https://github.com/Temasys/android-sample-message-cache).
+
+
+# Skylink Message Cache SDK
+
+This is an addon SDK for the Temasys SDK for Android.
+
+## SDK documentation
+
+* [Skylink Message Cache SDK for Android Reference](https://cdn.temasys.com.sg/skylink/skylinkmessagecachesdk/android/latest/doc/reference/sg/com/temasys/skylink/sdk/messagecache/SkylinkMessageCache.html)
+
+## Tutorials and FAQs
+
+[Skylink Message Cache SDK usage](https://github.com/Temasys/android-sample-message-cache#skylink-message-cache-sdk-usage)
+
+## Feedback
+
+Please raise your tickets in [Github issues](https://github.com/Temasys/skylink-android-sample/issues).
+
+## Copyright and License
+
+Copyright 2022 Temasys Communications Pte Ltd Licensed under [APACHE 2.0](http://www.apache.org/licenses/LICENSE-2.0.html)

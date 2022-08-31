@@ -1,5 +1,7 @@
 # SkylinkSDK for iOS
-[![Version](https://img.shields.io/cocoapods/v/MyLibrary.svg?style=flat)](http://cocoadocs.org/docsets/SKYLINK)  [![License](https://img.shields.io/cocoapods/l/MyLibrary.svg?style=flat)](http://cocoadocs.org/docsets/SKYLINK) [![Platform](https://img.shields.io/cocoapods/p/MyLibrary.svg?style=flat)](http://cocoadocs.org/docsets/SKYLINK)
+[![Version](https://img.shields.io/cocoapods/v/SKYLINK.svg?style=flat)](https://cocoapods.org/pods/SKYLINK)
+[![License](https://img.shields.io/cocoapods/l/SKYLINK.svg?style=flat)](https://cocoapods.org/pods/SKYLINK)
+[![Platform](https://img.shields.io/cocoapods/p/SKYLINK.svg?style=flat)](https://cocoapods.org/pods/SKYLINK)
 
 The **SkylinkSDK for iOS** lets you build real time webRTC applications with voice calling, video chat, P2P file sharing or data and messages exchange. Go multi-platform with our [Web](https://temasys.io/products/sdks/js/) and [Android](https://temasys.io/products/sdks/android/) SDKs.
 
@@ -8,7 +10,7 @@ The **SkylinkSDK for iOS** lets you build real time webRTC applications with voi
 Your project should use [ARC](https://docs.swift.org/swift-book/LanguageGuide/AutomaticReferenceCounting.html)  
 
 ## Minimum iOS version required
-iOS 9 or higher.
+iOS 10.0 or higher.
 
 ## How to install the SkylinkSDK for iOS on your app
 
@@ -26,12 +28,18 @@ Download and run the Carthage.pkg file for the latest [release](https://github.c
 ##### STEP 2  
 If you are using CocoaPods, add the following line to your Podfile:
 
-    pod "SKYLINK"
-    #If facing issues with installation, please use:
-    #pod 'SKYLINK', :git => 'https://github.com/Temasys/SKYLINK-iOS.git'
+``` ruby
+pod "SKYLINK"
+#If facing issues with installation, please use:
+#pod 'SKYLINK', :git => 'https://github.com/Temasys/SKYLINK-iOS.git'
+```
+
 If you are using Carthage, add the following line to your Cartfile:
-	
-    git "https://github.com/Temasys/SKYLINK-iOS.git"
+
+```
+git "https://github.com/Temasys/SKYLINK-iOS.git"
+```
+
 ##### STEP 3  
 Follow the instructions [here](https://github.com/Temasys/GettingStarted) to create an App and a key on the Temasys Console.
 
@@ -43,21 +51,25 @@ To create a Swift project using Teamsys iOS SDK, follow these steps:
 ###### If you are using CocoaPods:
 
 Your Podfile should look like that:
-	
-    project 'SampleApp_Swift.xcodeproj'
-    platform :ios, '9.0'
-    target 'SampleApp_Swift' do
+
+``` ruby
+project 'SampleApp_Swift.xcodeproj'
+platform :ios, '10.0'
+target 'SampleApp_Swift' do
     use_frameworks!
     pod "SKYLINK"
     #If facing issues with installation, please use:
     #pod 'SKYLINK', :git => 'https://github.com/Temasys/SKYLINK-iOS.git'
-    end
+end
+```
 
 In the terminal, run `pod install`
 ###### If you are using Carthage:
 Your Cartfile should look like that:
-	
-    git "https://github.com/Temasys/SKYLINK-iOS.git"
+
+```
+git "https://github.com/Temasys/SKYLINK-iOS.git"
+```
 
 In the terminal, run `carthage update`
 
@@ -155,7 +167,7 @@ The rest of the example view controllers gives you 6 example usages of the Temas
 ### Step-by-step guide
 
 ##### Prerequisites  
-Please use Xcode 11
+Please use Xcode version 11 or above
 
 ##### STEP 1  
 It is recommended to install the SkylinkSDK for iOS via [cocoapods](http://cocoapods.org). If you do not have it installed, follow the below steps:
@@ -246,26 +258,28 @@ You will then be able to communicate with another peer joining the same room.
 
 ##### Sample Code  
 
-    // SKYLINKConnection creation for video call room
-    lazy var skylinkConnection: SKYLINKConnection = {
-        // Creating configuration
-        let config = SKYLINKConnectionConfig()
-        config.setAudioVideoSend(AudioVideoConfig_AUDIO_AND_VIDEO)
-        config.setAudioVideoReceive(AudioVideoConfig_AUDIO_AND_VIDEO)  
-        
-        // Creating SKYLINKConnection
-        if let skylinkConnection = SKYLINKConnection(config: config, callback: nil) {
-            skylinkConnection.lifeCycleDelegate = self
-            skylinkConnection.mediaDelegate = self
-            skylinkConnection.remotePeerDelegate = self
-            return skylinkConnection
-        } else {
-            return SKYLINKConnection()
-        }
-    }()  
-	
-    // Use SKYLINKConnection(with your key and secret) to connect to a room
-    skylinkConnection.connectToRoom(withAppKey: skylinkApiKey, secret: skylinkApiSecret, roomName: ROOM_NAME, userData: USER_NAME, callback: nil)
+``` swift
+// SKYLINKConnection creation for video call room
+lazy var skylinkConnection: SKYLINKConnection = {
+    // Creating configuration
+    let config = SKYLINKConnectionConfig()
+    config.setAudioVideoSend(AudioVideoConfig_AUDIO_AND_VIDEO)
+    config.setAudioVideoReceive(AudioVideoConfig_AUDIO_AND_VIDEO)  
+    
+    // Creating SKYLINKConnection
+    if let skylinkConnection = SKYLINKConnection(config: config, callback: nil) {
+        skylinkConnection.lifeCycleDelegate = self
+        skylinkConnection.mediaDelegate = self
+        skylinkConnection.remotePeerDelegate = self
+        return skylinkConnection
+    } else {
+        return SKYLINKConnection()
+    }
+}()  
+
+// Use SKYLINKConnection(with your key and secret) to connect to a room
+skylinkConnection.connectToRoom(withAppKey: skylinkApiKey, secret: skylinkApiSecret, roomName: ROOM_NAME, userData: USER_NAME, callback: nil)
+```
 
 You can then control what happens in the room by **sending messages to the `SKYLINKConnection` instance** (like triggering a file transfer request for example), and **respond to events by implementing the delegate methods** from the 6 protocols.
 Always set at least the [lifeCycleDelegate](https://cdn.temasys.io/skylink/skylinksdk/ios/latest/docs/html/Protocols/SKYLINKConnectionLifeCycleDelegate.html). For a list of all protocols, see [here](https://cdn.temasys.io/skylink/skylinksdk/ios/latest/docs/html/index.html)
@@ -276,6 +290,66 @@ A disconnect button is set in the navigation bar (left corner) as well as its se
 
 The rest of the example view controllers gives you 6 example usages of the Temasys iOS SDK.
 
+## Persistent Message Caching
+
+How to integrate persistent message cache feature to your application.
+
+### 1. Change `pod 'SKYLINK'` entry in the Podfile.
+
+`Podfile`
+
+``` ruby
+pod 'SKYLINK', '~> 2.3.1'
+# pod 'SKYLINK', :git => 'https://github.com/Temasys/SKYLINK-iOS.git', :tag => '2.3.1'
+```
+
+### 2. Install updated CocoaPods dependency.
+
+```bash
+$ pod install
+```
+
+### 3. Enable message cache feature in `SKYLINKConnectionConfig`.
+
+```swift
+import SKYLINK_MESSAGE_CACHE
+
+let config = SKYLINKConnectionConfig()
+config.hasP2PMessaging = true
+...
+
+// Enable message cache feature
+config.isMessageCacheEnabled = true
+
+// Set maximum number of messages that will be cached per Skylink Room (default value is 50)
+config.messageCacheLimit = 100
+
+// Initialize SKYLINKConnection with message cache enabled config
+let skylinkConnection = SKYLINKConnection(config: config, callback: nil)
+```
+
+### 4. Get cached messages.
+
+```swift
+import SKYLINK_MESSAGE_CACHE
+
+// Message cache feature is enabled?
+if (SkylinkMessageCache.instance().isEnabled) {
+    // Get cached messages for the room "my-test-room"
+    let cachedMessages = SkylinkMessageCache.instance().getReadableCacheSession(forRoomName: "my-test-room").cachedMessages()
+
+    if (!cachedMessages.isEmpty) {
+        for m in cachedMessages {
+            if let dict = m as? [String: Any] {
+                // dict["data"] as? String
+                // dict["timeStamp"] as? Int64
+                // dict["peerId"] as? String
+            }
+        }
+    }
+}
+```
+
 ## Swift Version Supported
 Swift 5.1 and Swift 5.1.2
 
@@ -284,7 +358,7 @@ Swift 5.1 and Swift 5.1.2
 ### Step-by-step guide
 
 ##### Prerequisites  
-Please use Xcode 11
+Please use Xcode version 11 or above
 
 ##### STEP 1  
 It is recommended to install the SkylinkSDK for iOS via [cocoapods](http://cocoapods.org). If you do not have it installed, follow the below steps:
@@ -308,15 +382,16 @@ Follow the instructions [here](https://temasys.io/creating-an-account-generating
 ##### STEP 6   
 Set your App Key and secret in Constants.swift. You may also alter the room names here.
 
-    var APP_KEY = "ENTER APP KEY HERE"
-    var APP_SECRET = "ENTER SECRET HERE"
-    var ROOM_ONE_TO_ONE_VIDEO = "VIDEO-CALL-ROOM"
-    var ROOM_MULTI_VIDEO = "MULTI-VIDEO-CALL-ROOM"
-    var ROOM_AUDIO = "AUDIO-CALL-ROOM"
-    var ROOM_MESSAGES = "MESSAGES-ROOM"
-    var ROOM_FILE_TRANSFER = "FILE-TRANSFER-ROOM"
-    var ROOM_DATA_TRANSFER = "ROOMNAME_DATATRANSFER"
-    
+``` swift
+var APP_KEY = "ENTER APP KEY HERE"
+var APP_SECRET = "ENTER SECRET HERE"
+var ROOM_ONE_TO_ONE_VIDEO = "VIDEO-CALL-ROOM"
+var ROOM_MULTI_VIDEO = "MULTI-VIDEO-CALL-ROOM"
+var ROOM_AUDIO = "AUDIO-CALL-ROOM"
+var ROOM_MESSAGES = "MESSAGES-ROOM"
+var ROOM_FILE_TRANSFER = "FILE-TRANSFER-ROOM"
+var ROOM_DATA_TRANSFER = "ROOMNAME_DATATRANSFER"
+```
 
 ##### STEP 7  
 Build and Run. You're good to go!
@@ -348,10 +423,9 @@ Copyright 2019 Temasys Communications Pte Ltd Licensed under APACHE 2.0
 [FAQs](http://support.temasys.com.sg/support/solutions/12000000562)
 
 
-
 Also checkout our Skylink SDKs for [Web](https://github.com/Temasys/GettingStarted/tree/main/Web) and [Android](https://github.com/Temasys/GettingStarted/tree/main/Android)
 
-*This document was edited for Temasys iOS SDK version 2.0.0*
+*This document was edited for Temasys iOS SDK version 2.3.1*
 
 
 

@@ -105,15 +105,13 @@ See our [Swift](https://github.com/Temasys/SkylinkSDK_iOS_SampleApp_Swift) and [
 ### Documentation, Guides and FAQs  
 [SDK Documentation](https://cdn.temasys.io/skylink/skylinksdk/ios/latest/docs/html/index.html)  
 [Getting started with Temasys iOS SDK for iOS](https://github.com/Temasys/GettingStarted/tree/main/iOS/)    
-[Handle the video view stretching](http://temasys.io/a-simple-solution-for-video-stretching/)    
-[FAQs](http://support.temasys.com.sg/support/solutions/12000000562)  
 
 
 ## Subscribe  
-Star this repo to be notified of new release tags. You can also view release notes on our [support portal](http://support.temasys.com.sg/en/support/solutions/folders/12000009706)
+Star this repo to be notified of new release tags.
 
 ## Feedback  
-Please do not hesitate to reach get in touch with us if you encounter any issue or if you have any feedback or suggestions on how we can improve the Skylink SDK for iOS or Sample Applications. You can raise tickets on our [support portal](http://support.temasys.io/).
+Please do not hesitate to reach get in touch with us if you encounter any issue or if you have any feedback or suggestions on how we can improve the Skylink SDK for iOS or Sample Applications. You can raise tickets on our [support portal](https://support.temasys.io/).
 
 
 
@@ -216,21 +214,18 @@ If you have connected a phone, ensure it is unlocked and the appropriate team is
 For more information on the usage of the SkylinkSDK for iOS, please refer to [SkylinkSDK for iOS Readme](https://github.com/Temasys/SKYLINK-iOS/blob/master/README.md)
 
 ##### Subscribe  
-Star this repo to be notified of new release tags. You can also view release notes on our [support portal](http://support.temasys.com.sg/en/support/solutions/folders/12000009706)
+Star this repo to be notified of new release tags.
 
 ##### Feedback  
-Please do not hesitate to reach get in touch with us if you encounter any issue or if you have any feedback or suggestions on how we can improve the Skylink SDK for iOS or Sample Applications. You can raise tickets on our [support portal](http://support.temasys.io/).
+Please do not hesitate to reach get in touch with us if you encounter any issue or if you have any feedback or suggestions on how we can improve the Skylink SDK for iOS or Sample Applications. You can raise tickets on our [support portal](https://support.temasys.io/).
 
 ##### Copyright and License  
-Copyright 2019 Temasys Communications Pte Ltd Licensed under APACHE 2.0  
+Copyright 2024 Temasys Communications Pte Ltd Licensed under APACHE 2.0  
 
 
 #### Tutorials and FAQs
 
-[Getting started with Temasys iOS SDK for iOS](https://github.com/Temasys/GettingStarted/tree/main/iOS)  
-[Handle the video view stretching](http://temasys.io/a-simple-solution-for-video-stretching/)  
-[FAQs](http://support.temasys.com.sg/support/solutions/12000000562)
-  
+[Getting started with Temasys iOS SDK for iOS](https://github.com/Temasys/GettingStarted/tree/main/iOS)
 
 Also checkout our Skylink SDKs for [Web](https://github.com/Temasys/GettingStarted/tree/main/Web) and [Android](https://github.com/Temasys/GettingStarted/tree/main/Android)
 
@@ -377,7 +372,7 @@ Navigate to the Swift Sample App and Run `pod install`
 Open the .xcworkspace file
 
 ##### STEP 5  
-Follow the instructions [here](https://temasys.io/creating-an-account-generating-a-key/) to create an App and a key on the Temasys Console.
+Follow the instructions [here](https://github.com/Temasys/GettingStarted/blob/main/README.md) to create an App and a key on the Temasys Console.
 
 ##### STEP 6   
 Set your App Key and secret in Constants.swift. You may also alter the room names here.
@@ -407,21 +402,18 @@ If you have connected a phone, ensure it is unlocked and the appropriate team is
 For more information on the usage of the SkylinkSDK for iOS, please refer to [SkylinkSDK for iOS Readme](https://github.com/Temasys/SKYLINK-iOS/blob/master/README.md)
 
 ##### Subscribe  
-Star this repo to be notified of new release tags. You can also view release notes on our [support portal](http://support.temasys.com.sg/en/support/solutions/folders/12000009706)
+Star this repo to be notified of new release tags. You can also view release notes on our [support portal](https://support.temasys.io/)
 
 ##### Feedback  
-Please do not hesitate to reach get in touch with us if you encounter any issue or if you have any feedback or suggestions on how we can improve the Skylink SDK for iOS or Sample Applications. You can raise tickets on our [support portal](http://support.temasys.io/).
+Please do not hesitate to reach get in touch with us if you encounter any issue or if you have any feedback or suggestions on how we can improve the Skylink SDK for iOS or Sample Applications. You can raise tickets on our [support portal](https://support.temasys.io/).
 
 ##### Copyright and License  
-Copyright 2019 Temasys Communications Pte Ltd Licensed under APACHE 2.0  
+Copyright 2024 Temasys Communications Pte Ltd Licensed under APACHE 2.0  
 
 
 #### Tutorials and FAQs
 
-[Getting started with Temasys iOS SDK for iOS](https://github.com/Temasys/GettingStarted/tree/main/iOS)  
-[Handle the video view stretching](http://temasys.io/a-simple-solution-for-video-stretching/)  
-[FAQs](http://support.temasys.com.sg/support/solutions/12000000562)
-
+[Getting started with Temasys iOS SDK for iOS](https://github.com/Temasys/GettingStarted/tree/main/iOS)
 
 Also checkout our Skylink SDKs for [Web](https://github.com/Temasys/GettingStarted/tree/main/Web) and [Android](https://github.com/Temasys/GettingStarted/tree/main/Android)
 

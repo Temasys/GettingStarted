@@ -488,8 +488,6 @@ Example of config.xml file using a single App Key: 12345678-abc2-abc3-abc4-abc5a
 <string name="app_key_desc_smr">Any string</string>
 ```
 
-### For more examples, you may wish to refer to our guide: [How does the Sample App handle SMR Functionality?](http://support.temasys.com.sg/support/solutions/articles/12000064630)
-
 #### STEP 6
 Build the project
 
@@ -505,25 +503,19 @@ For more information on the usage of the Temasys SDK for Android, please refer t
 
  - [Temasys SDK for Android Readme](https://github.com/Temasys/GettingStarted/tree/main/Android)
 
-## Tutorials and FAQs
-
-[FAQS](http://support.temasys.com.sg/support/solutions/12000000313)
-
-
-
 ## Subscribe
 
-Star this repo to be notified of new release tags. You can also view [release notes on our support portal](http://support.temasys.com.sg/support/solutions/folders/12000009705)
+Star this repo to be notified of new release tags.
 
 ## Feedback
 
 Please do not hesitate to reach get in touch with us if you encounter any issue or if you have any feedback or suggestions on how we could improve the Temasys SDK for Android or Sample Application.
-You can raise tickets on our [support portal](http://support.temasys.io/) or on github.
+You can raise tickets on our [support portal](https://support.temasys.io/) or on github.
 
 
 ## Copyright and License
 
-Copyright 2019 Temasys Communications Pte Ltd Licensed under [APACHE 2.0](http://www.apache.org/licenses/LICENSE-2.0.html)
+Copyright 2024 Temasys Communications Pte Ltd Licensed under [APACHE 2.0](http://www.apache.org/licenses/LICENSE-2.0.html)
 
 
 # Sample app architecture in MVP

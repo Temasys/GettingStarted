@@ -28,7 +28,7 @@ Then you’ll be able to use our world-class SDKs to add video, audio, chat, and
 
 ## **Step 1: Create an Account on the Temasys Console**
 
-The first step to getting started is to create an account on the Temasys Console here: [https://console.temasys.io/register.](https://console.temasys.io/register)
+The first step to getting started is to create an account on the Temasys Console here: [https://console.temasys.io.](https://console.temasys.io/#/register)
 
 If you haven’t registered with Temasys, then please click the Register button.
 
@@ -78,7 +78,7 @@ Click the View Keys button to view your app keys. Remember that you app keys are
 ### **ADDITIONAL RESOURCES**
 
 -   [Temasys Developer Console](https://console.temasys.io/)
--   [Skylink API Documentation](https://cdn.temasys.io/skylink/skylinkjs/latest/doc/classes/Skylink.html)
+-   [Skylink API Documentation](https://cdn.temasys.io/skylink/skylinkjs/latest/docs/Skylink.html)
 -   [Temasys SkylinkJS Releases](https://github.com/Temasys/SkylinkJS/releases)
--   [Temasys SkylinkJS source code on Github](http://github.com/Temasys/SkylinkJS) (demos  [here](https://github.com/Temasys/SkylinkJS/tree/2.x.x/master/demos))
--   [How to get support or contribute](https://temasys.io/knowledge-center/)
+-   [Temasys SkylinkJS source code on Github](https://github.com/Temasys/SkylinkJS) (demos  [here](https://github.com/Temasys/SkylinkJS/tree/2.x.x/master/demos))
+-   [How to get support or contribute](https://support.temasys.io/)
